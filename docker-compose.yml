@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    container_name: todo-app-nestjs-prisma-mysql
+    volumes:
+      - db-store:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=todo
+      - MYSQL_DATABASE=todo
+      - MYSQL_USER=todo
+      - MYSQL_PASSWORD=todopass
+      - TZ=Asia/Tokyo
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 23306:3306
+
+# データを永続化させるため
+volumes:
+  db-store:
